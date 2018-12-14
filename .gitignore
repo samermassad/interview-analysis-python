@@ -116,3 +116,6 @@ dmypy.json
 
 # Google Credentials
 google_credentials.json
+
+# Pycharm idea folder
+.idea/
