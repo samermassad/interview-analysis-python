@@ -1,0 +1,4 @@
+google.cloud
+cv2
+numpy
+tqdm
