@@ -1,4 +1,6 @@
 google.cloud
+google.cloud.vision
 opencv-python
 numpy
 tqdm
+image
