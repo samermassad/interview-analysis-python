@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 
 def main(root_dir):
-    exporter = ExcelExporter('D:/Desktop/results.xlsx')
+    exporter = ExcelExporter('results.xlsx')
     files = glob.iglob(root_dir + '**/*.mp4', recursive=True)
     # number_of_files = len(list(files))
     # progress_bar = tqdm(total=2, position=1, leave=True)
