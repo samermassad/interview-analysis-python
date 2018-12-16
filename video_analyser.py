@@ -3,7 +3,7 @@ import numpy as np
 from tqdm import tqdm
 # import logging
 from PIL import Image
-import google_api_request as api
+from google_api_request import Request
 # from enums import Emotions
 import video_results
 from video_results import VideoResults
@@ -31,6 +31,7 @@ def analyse_file(input_file):
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     progress_bar = tqdm(total=frame_count, leave=False)
 
+    api = Request()
     while cap.isOpened():
         ret, frame = cap.read()
         if (not ret) | (cv2.waitKey(1) & 0xFF == ord('q')):
