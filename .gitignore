@@ -120,3 +120,6 @@ google_storage_credentials.json
 
 # Pycharm idea folder
 .idea/
+
+# Test Python file
+test.py
