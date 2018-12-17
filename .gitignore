@@ -127,3 +127,6 @@ test.py
 # Results folder
 results/
 *.xlsx
+
+# Log files
+*.log

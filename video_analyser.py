@@ -19,9 +19,6 @@ def analyse_file(input_file):
         # logging.warning("Unable to open {}, skipping...".format(input_file))
         return
 
-
-    # logging.info("Analysing: " + input_file)
-
     analysed_data = {}
     frame_number = 0
 
