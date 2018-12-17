@@ -1,10 +1,9 @@
 from enums import Emotions
-import pandas
 
 
 class VideoResults:
 
-    def __init__(self, init_value = None):
+    def __init__(self, init_value=0):
         self._face_count = init_value
         self._detection_confidence = init_value
         self._camera_instability = init_value

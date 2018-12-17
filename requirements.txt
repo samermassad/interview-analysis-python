@@ -4,5 +4,4 @@ opencv-python
 numpy
 tqdm
 image
-pandas
-xlsxwriter
+openpyxl

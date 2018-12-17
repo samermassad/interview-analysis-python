@@ -12,7 +12,6 @@ class Request:
         return faces
 
     def api_call(self, image):
-        # client = vision.ImageAnnotatorClient()
 
         content = io.BytesIO()
         image.save(content, format='JPEG')

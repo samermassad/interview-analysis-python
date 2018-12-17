@@ -123,3 +123,7 @@ google_storage_credentials.json
 
 # Test Python file
 test.py
+
+# Results folder
+results/
+*.xlsx

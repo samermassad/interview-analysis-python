@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from tqdm import tqdm
-# import logging
+import logging
 from PIL import Image
 from google_api_request import Request
 # from enums import Emotions
@@ -11,7 +11,7 @@ from video_results import VideoResults
 
 def analyse_file(input_file):
     # Logging
-    # logging.basicConfig(filename='video_analyser.log', level=logging.DEBUG)
+    logging.basicConfig(filename='video_analyser.log', level=logging.DEBUG)
 
     cap = cv2.VideoCapture(input_file)
     if not cap.isOpened():
@@ -19,7 +19,7 @@ def analyse_file(input_file):
         # logging.warning("Unable to open {}, skipping...".format(input_file))
         return
 
-    print("Analysing: " + input_file)
+
     # logging.info("Analysing: " + input_file)
 
     analysed_data = {}
@@ -29,7 +29,7 @@ def analyse_file(input_file):
 
     # progress bar
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    progress_bar = tqdm(total=frame_count, leave=False)
+    progress_bar = tqdm(total=frame_count, leave=False, unit="frames")
 
     api = Request()
     while cap.isOpened():
