@@ -114,9 +114,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Google Credentials
+# Credentials
 google_credentials.json
 google_storage_credentials.json
+azur_cognitive_services_key.py
 
 # Pycharm idea folder
 .idea/

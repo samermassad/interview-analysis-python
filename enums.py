@@ -3,7 +3,11 @@ from enum import Enum
 
 class Emotions(Enum):
     neutral = 0
-    happy = 1
-    angry = 2
+    happiness = 1
+    anger = 2
     sorrow = 3
-    surprised = 4
+    surprise = 4
+    contempt = 5
+    disgust = 6
+    fear = 7
+    sadness = 8

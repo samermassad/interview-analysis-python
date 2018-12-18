@@ -17,12 +17,8 @@ class VideoResults:
             1: init_value,
             2: init_value
         }
-        self._emotions = {
-            Emotions.happy: init_value,
-            Emotions.sorrow: init_value,
-            Emotions.angry: init_value,
-            Emotions.surprised: init_value
-        }
+        self._emotions = {}
+        self._smile = 0.0
 
     # Face count
     @property
@@ -67,21 +63,6 @@ class VideoResults:
             "tilt_angle": tilt_angle
         }
 
-    # # Head position
-    # @property
-    # def face_position(self):
-    #     return self._face_position
-    #
-    # @face_position.setter
-    # def face_position(self, value):
-    #     self._face_position = value
-    #
-    # def set_head_position(self, upper_left_point, lower_right_point):
-    #     self._face_position = {
-    #         1: upper_left_point,
-    #         2: lower_right_point
-    #     }
-
     # Emotions
     @property
     def emotions(self):
@@ -98,6 +79,15 @@ class VideoResults:
             Emotions.angry: anger_likelihood,
             Emotions.surprised: surprise_likelihood
         }
+
+    # Smile
+    @property
+    def smile(self):
+        return self._smile
+
+    @smile.setter
+    def smile(self, value):
+        self._smile = value
 
 
 def calculate_average_results(data):
@@ -116,21 +106,15 @@ def calculate_average_results(data):
             averages.head_pose = {k: averages.head_pose.get(k, 0) + temp.get(k, 0) for k in
                                   set(averages.head_pose) | set(temp)}
 
-            # # face position
-            # temp = frame_analysed_data.face_position
-            # print(temp)
-            # for point_number, points in temp.items():
-            #     for key, value in temp.items():
-            #         temp[point_number][key] = value / length
-            # averages.face_position = {k: averages.face_position.get(k, 0) + temp.get(k, 0) for k in
-            #                       set(averages.face_position) | set(temp)}
-
             # emotions
             temp = frame_analysed_data.emotions
             for key, value in temp.items():
                 temp[key] = value / length
             averages.emotions = {k: averages.emotions.get(k, 0) + temp.get(k, 0) for k in
                                   set(averages.emotions) | set(temp)}
+
+            # smile
+            averages.smile += frame_analysed_data.smile / length
         return averages
     else:
         return None

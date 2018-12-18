@@ -17,10 +17,23 @@ class ExcelExporter:
         worksheet['E1'] = 'Head Pose - Roll'
         worksheet['F1'] = 'Head Pose - Pan'
         worksheet['G1'] = 'Head Pose - Tilt'
-        worksheet['H1'] = 'Emotions - Joy'
-        worksheet['I1'] = 'Emotions - Sorrow'
-        worksheet['J1'] = 'Emotions - Anger'
-        worksheet['K1'] = 'Emotions - Surprised'
+
+        # # Google API
+        # worksheet['H1'] = 'Emotions - Joy'
+        # worksheet['I1'] = 'Emotions - Sorrow'
+        # worksheet['J1'] = 'Emotions - Anger'
+        # worksheet['K1'] = 'Emotions - Surprised'
+
+        # Azure API
+        worksheet['H1'] = 'Emotions - Surprise'
+        worksheet['I1'] = 'Emotions - Happiness'
+        worksheet['J1'] = 'Emotions - Fear'
+        worksheet['K1'] = 'Emotions - Disgust'
+        worksheet['L1'] = 'Emotions - Neutral'
+        worksheet['M1'] = 'Emotions - Anger'
+        worksheet['N1'] = 'Emotions - Sadness'
+        worksheet['O1'] = 'Emotions - Contempt'
+        worksheet['P1'] = 'Smile'
 
         bold_font = Font(bold=True)
         for cell in worksheet["1:1"]:
@@ -42,10 +55,23 @@ class ExcelExporter:
         results_sheet.cell(row=self.append_row, column=5).value = results.head_pose['roll_angle']
         results_sheet.cell(row=self.append_row, column=6).value = results.head_pose['pan_angle']
         results_sheet.cell(row=self.append_row, column=7).value = results.head_pose['tilt_angle']
-        results_sheet.cell(row=self.append_row, column=8).value = results.emotions[Emotions.happy]
-        results_sheet.cell(row=self.append_row, column=9).value = results.emotions[Emotions.sorrow]
-        results_sheet.cell(row=self.append_row, column=10).value = results.emotions[Emotions.angry]
-        results_sheet.cell(row=self.append_row, column=11).value = results.emotions[Emotions.surprised]
+
+        # Google API
+        # results_sheet.cell(row=self.append_row, column=8).value = results.emotions[Emotions.happiness]
+        # results_sheet.cell(row=self.append_row, column=9).value = results.emotions[Emotions.sorrow]
+        # results_sheet.cell(row=self.append_row, column=10).value = results.emotions[Emotions.anger]
+        # results_sheet.cell(row=self.append_row, column=11).value = results.emotions[Emotions.surprise]
+
+        # Azure API
+        results_sheet.cell(row=self.append_row, column=8).value = results.emotions['surprise']
+        results_sheet.cell(row=self.append_row, column=9).value = results.emotions['happiness']
+        results_sheet.cell(row=self.append_row, column=10).value = results.emotions['fear']
+        results_sheet.cell(row=self.append_row, column=11).value = results.emotions['disgust']
+        results_sheet.cell(row=self.append_row, column=12).value = results.emotions['neutral']
+        results_sheet.cell(row=self.append_row, column=13).value = results.emotions['anger']
+        results_sheet.cell(row=self.append_row, column=14).value = results.emotions['sadness']
+        results_sheet.cell(row=self.append_row, column=15).value = results.emotions['contempt']
+        results_sheet.cell(row=self.append_row, column=16).value = results.smile
 
         self.append_row += 1
 

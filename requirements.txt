@@ -5,3 +5,4 @@ numpy
 tqdm
 image
 openpyxl
+requests
