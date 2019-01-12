@@ -4,6 +4,7 @@ import glob
 from excel_export import ExcelExporter
 import time
 import logging
+import grader
 
 
 def main(root_dir, output_file):
@@ -29,12 +30,19 @@ def main(root_dir, output_file):
     logging.info('{} files found'.format(number_of_files))
 
     for filename in files:
+
+        # Logging
         percentage = current_file_number / number_of_files * 100
         logging.info("Analysing {}/{} ({}%): {}".format(current_file_number, number_of_files,
                                                       float("%0.2f" % percentage), filename))
 
+        # Analyse video
         analysed_data = video_analyser.analyse_file(filename)
 
+        # Calculate score
+        score = grader.calculate_grade(analysed_data)
+
+        # Append results to Excel
         exporter.append_results(analysed_data, filename)
 
         current_file_number += 1

@@ -3,7 +3,7 @@ from enums import Emotions
 
 class VideoResults:
 
-    def __init__(self, init_value=0):
+    def __init__(self, init_value=None):
         self._face_count = init_value
         self._detection_confidence = init_value
         self._camera_instability = init_value
@@ -13,10 +13,10 @@ class VideoResults:
             "pan_angle": init_value,
             "tilt_angle": init_value
         }
-        self._face_position = {
-            1: init_value,
-            2: init_value
-        }
+        # self._face_position = {
+        #     1: init_value,
+        #     2: init_value
+        # }
         self._emotions = {}
         self._smile = 0.0
 
