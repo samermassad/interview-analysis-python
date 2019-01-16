@@ -126,7 +126,7 @@ azur_cognitive_services_key.py
 test.py
 
 # Results folder
-results/
+results/*
 *.xlsx
 
 # Log files

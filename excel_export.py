@@ -34,6 +34,7 @@ class ExcelExporter:
         worksheet['N1'] = 'Emotions - Sadness'
         worksheet['O1'] = 'Emotions - Contempt'
         worksheet['P1'] = 'Smile'
+        worksheet['Q1'] = 'Score'
 
         bold_font = Font(bold=True)
         for cell in worksheet["1:1"]:
@@ -43,7 +44,7 @@ class ExcelExporter:
 
         self.append_row = 2
 
-    def append_results(self, results, file):
+    def append_results(self, results, score, file):
         results_file = openpyxl.load_workbook(self.filename)
 
         results_sheet = results_file.get_active_sheet()
@@ -72,6 +73,7 @@ class ExcelExporter:
         results_sheet.cell(row=self.append_row, column=14).value = results.emotions['sadness']
         results_sheet.cell(row=self.append_row, column=15).value = results.emotions['contempt']
         results_sheet.cell(row=self.append_row, column=16).value = results.smile
+        results_sheet.cell(row=self.append_row, column=17).value = score
 
         self.append_row += 1
 

@@ -25,3 +25,13 @@ head_pose_weight = 1.0
 face_position_weight = 1.0
 emotions_weight = 1.0
 smile_weight = 1.0
+
+# Thresholds
+face_count_threshold = 1.0
+detection_confidence_threshold = 1.0
+camera_instability_threshold = 0.0
+head_pose_roll_threshold = 40.0
+head_pose_tilt_threshold = 10.0
+happiness_threshold = 1.0
+sadness_threshold = 0.0
+smile_threshold = 1.0

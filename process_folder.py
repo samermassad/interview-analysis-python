@@ -20,7 +20,6 @@ def main(root_dir, output_file):
     logging.info('Logging to: {}'.format(log_file))
 
     exporter = ExcelExporter(output_file)
-    # print("Exporting results to: {}".format(output_file))
     logging.info('Exporting results to: {}'.format(output_file))
 
     files = glob.iglob(root_dir + '**/*.mp4', recursive=True)
@@ -43,7 +42,7 @@ def main(root_dir, output_file):
         score = grader.calculate_grade(analysed_data)
 
         # Append results to Excel
-        exporter.append_results(analysed_data, filename)
+        exporter.append_results(analysed_data, score, filename)
 
         current_file_number += 1
     logging.info("Results exported to: {}".format(output_file))
