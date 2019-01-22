@@ -38,6 +38,10 @@ class Request(AbstractRequest):
 
         return results
 
+    def generalise_results(self, results):
+        # TODO: To be implemented
+        pass
+
     def is_error(self, results):
         # TODO: To be implemented
         pass

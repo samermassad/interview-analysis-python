@@ -24,6 +24,11 @@ class AbstractRequest(ABC):
         pass
 
     @abstractmethod
+    def generalise_results(self, results):
+        # TODO: To be implemented
+        pass
+
+    @abstractmethod
     def is_error(self, results):
         # TODO: To be implemented
         pass
