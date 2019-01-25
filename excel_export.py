@@ -36,19 +36,25 @@ class ExcelExporter:
         worksheet['P1'] = 'Smile'
         worksheet['Q1'] = 'Score'
 
+        # Set headers to bold
         bold_font = Font(bold=True)
         for cell in worksheet["1:1"]:
             cell.font = bold_font
 
+        # Save file
         workbook.save(self.filename)
 
+        # Set append_row to first line after headers
         self.append_row = 2
 
     def append_results(self, results, score, file):
+        # Load the file
         results_file = openpyxl.load_workbook(self.filename)
 
+        # Get active sheet
         results_sheet = results_file.get_active_sheet()
 
+        # Write values in row
         results_sheet.cell(row=self.append_row, column=1).value = file
         results_sheet.cell(row=self.append_row, column=2).value = results.face_count
         results_sheet.cell(row=self.append_row, column=3).value = results.camera_instability
@@ -75,6 +81,8 @@ class ExcelExporter:
         results_sheet.cell(row=self.append_row, column=16).value = results.smile
         results_sheet.cell(row=self.append_row, column=17).value = score
 
+        # Increment append_row
         self.append_row += 1
 
+        # Save file
         results_file.save(self.filename)

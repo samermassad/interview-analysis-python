@@ -8,6 +8,7 @@ import grader
 
 
 def main(root_dir, output_file):
+    # Logging
     level = logging.INFO
     log_file = '{}.log'.format(output_file)
     handlers = [logging.FileHandler(log_file), logging.StreamHandler()]
@@ -19,9 +20,11 @@ def main(root_dir, output_file):
     logging.info('Process Started')
     logging.info('Logging to: {}'.format(log_file))
 
+    # Instantiate the ExcelExporter
     exporter = ExcelExporter(output_file)
     logging.info('Exporting results to: {}'.format(output_file))
 
+    # Files Iterator
     files = glob.iglob(root_dir + '**/*.mp4', recursive=True)
     number_of_files = len(list(glob.iglob(root_dir + '**/*.mp4', recursive=True)))
     current_file_number = 1
@@ -29,7 +32,6 @@ def main(root_dir, output_file):
     logging.info('{} files found'.format(number_of_files))
 
     for filename in files:
-
         # Logging
         percentage = current_file_number / number_of_files * 100
         logging.info("Analysing {}/{} ({}%): {}".format(current_file_number, number_of_files,
@@ -49,6 +51,7 @@ def main(root_dir, output_file):
 
 
 if __name__ == '__main__':
+    # Add CLI arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("dir", help="root directory of video files")
     parser.add_argument("-o", help="output file name/path")
@@ -57,4 +60,6 @@ if __name__ == '__main__':
         file = args.o
     else:
         file = "./results/{}_{}".format(time.strftime('%Y-%m-%d-%H-%M-%S'), 'results.xlsx')
+
+    # Call main method
     main(args.dir, file)

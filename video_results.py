@@ -13,10 +13,6 @@ class VideoResults:
             "pan_angle": init_value,
             "tilt_angle": init_value
         }
-        # self._face_position = {
-        #     1: init_value,
-        #     2: init_value
-        # }
         self._emotions = {}
         self._smile = 0.0
 
@@ -93,10 +89,20 @@ class VideoResults:
 def calculate_average_results(data):
     length = len(data)
     if length > 0:
+        # Instantiate empty VideoResults
         averages = VideoResults(0)
+
+        # Iterate in results
         for frame_number, frame_analysed_data in data.items():
+            # Calculate averages
+
+            # Face Count
             averages.face_count += frame_analysed_data.face_count / length
+
+            # Camera Instability
             averages.camera_instability += frame_analysed_data.camera_instability / length
+
+            # Detection Confidence
             averages.detection_confidence += frame_analysed_data.detection_confidence / length
 
             # head pose
